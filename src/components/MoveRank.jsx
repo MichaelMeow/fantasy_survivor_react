@@ -34,18 +34,19 @@ class MoveRank extends React.Component {
   }
 
   render() {
+    const contestantsList = Object.keys(this.props.contestants);
+    console.log(contestantsList);
     return (
       <div>
-      <RankBarMobile/>
-      <RankBarMobile/>
-      <RankBarMobile/>
+        <RankBarMobile contestant={this.props.contestants[contestantsList[0]]}/>
+        <RankBarMobile contestant={this.props.contestants[contestantsList[1]]}/>
+
       
-      
-      <style jsx>{`
+        <style jsx>{`
         
         `}</style>
-        </div>
-      );
+      </div>
+    );
   }
 }
 

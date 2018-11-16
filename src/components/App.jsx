@@ -19,6 +19,15 @@ class App extends React.Component {
           currentTribe: 'Kalokalo',
           originalTribe: 'Goliath',
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
+          firstName: 'Alec',
+          lastName: 'Merlino'
+        },
+        mikewhite: {
+          currentTribe: 'Kalokalo',
+          originalTribe: 'Goliath',
+          photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
+          firstName: 'Mike',
+          lastName: 'White'
         }
       }
     };
@@ -47,7 +56,7 @@ class App extends React.Component {
         <Header/>
         <Nav/>
         <Switch>
-          <Route path='/move' component={Move} />
+          <Route path='/move' render={()=> <Move contestants={this.state.contestants} />} />
           <Route path='/scoreboard' component={Scoreboard} />
           <Route path='/episodes' component={Episodes} />
           <Route path='/rules' component={Rules} />

@@ -1,7 +1,9 @@
 import React from 'react';
 import ContestantPhotoMobile from './ContestantPhotoMobile';
+import PropTypes from 'prop-types';
 
-function RankBarMobile(){
+function RankBarMobile({contestant}){
+  console.log(contestant)
 
   return (
     <div className="rank-bar-container">
@@ -14,7 +16,7 @@ function RankBarMobile(){
             1
           </div>
           <div className="contestant">
-            Christian Hubicki
+            {contestant.firstName} {contestant.lastName}
           </div>
           <div className="tribe">
             Tiva
@@ -64,5 +66,9 @@ function RankBarMobile(){
     </div>
   );
 }
+
+RankBarMobile.propTypes = {
+  contestant: PropTypes.object
+};
 
 export default RankBarMobile;
