@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
-function SubmitButton(){
+function SubmitButton({onMoveSubmit}){
 
   return (
     <div className="submit-style">
@@ -9,7 +10,7 @@ function SubmitButton(){
         Please submit your move for this week. <br/>
         You have ____ left to submit.
       </div>
-      <div>
+      <div onClick={onMoveSubmit}>
         <Button name="Submit"/>
       </div>
 
@@ -31,5 +32,9 @@ function SubmitButton(){
     </div>
   );
 }
+
+SubmitButton.propTypes = {
+  onMoveSubmit: PropTypes.func
+};
 
 export default SubmitButton;

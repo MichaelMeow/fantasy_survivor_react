@@ -1,53 +1,34 @@
 import React from 'react';
 import RankBarMobile from './RankBarMobile';
+import PropTypes from 'prop-types';
 
 
+function MoveRank({contestants, onUpdateRank}){
 
-class MoveRank extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      rank: {
-        0: null,
-        1: null,
-        2: null,
-        3: null,
-        4: null,
-        5: null,
-        6: null,
-        7: null,
-        8: null,
-        9: null,
-        10: null,
-        11: null,
-        12: null,
-        13: null,
-        14: null,
-        15: null,
-        16: null,
-        17: null,
-        18: null,
-        19: null
-      }
-    };
+  const contestantList = Object.keys(contestants);
+  
+  function handleOnUpdateRank(){
+    onUpdateRank(contestantList);
   }
+  
+  //eventually implement sort feature to send order inside onUpdateRank
 
-  render() {
-    const contestantList = Object.keys(this.props.contestants);
-
-    return (
-      <div>
-      {contestantList.map((contestant, index) => 
-        <RankBarMobile contestant={this.props.contestants[contestant]}
-        key={index}/>
-      )}
-        <style jsx>{`
-        
-        `}</style>
-      </div>
-    );
-  }
+  return (
+    <div onClick={handleOnUpdateRank}>
+    {contestantList.map((contestant, index) => 
+      <RankBarMobile contestant={contestants[contestant]}
+      key={index}/>
+    )}
+      <style jsx>{`
+      
+      `}</style>
+    </div>
+  );
 }
+
+MoveRank.propTypes = {
+  contestants: PropTypes.object,
+  onUpdateRank: PropTypes.func
+};
 
 export default MoveRank;

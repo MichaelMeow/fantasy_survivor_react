@@ -25,7 +25,7 @@ class App extends React.Component {
         mikewhite: {
           currentTribe: 'Kalokalo',
           originalTribe: 'Goliath',
-          photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
+          photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/b0ff2beae68866cb_svr_mikew_800x1000.jpg',
           firstName: 'Mike',
           lastName: 'White'
         }
