@@ -2,6 +2,7 @@ import React from 'react';
 import SubmitButton from './SubmitButton';
 import MoveRankHeaderMobile from './MoveRankHeaderMobile';
 import MoveRank from './MoveRank';
+import PropTypes from 'prop-types';
 
 
 class Move extends React.Component {
@@ -37,11 +38,11 @@ class Move extends React.Component {
   
   handleMoveSubmit(){
     //send rank state to database
-    console.log("submitted");
+    // console.log('submitted');
   }
   
-  handleUpdateRank(rank){
-    console.log(rank);
+  handleUpdateRank(){
+    // console.log(rank);
   }
   
   render(){
@@ -57,5 +58,9 @@ class Move extends React.Component {
     );
   }
 }
+
+Move.propTypes = {
+  contestants: PropTypes.object,
+};
 
 export default Move;

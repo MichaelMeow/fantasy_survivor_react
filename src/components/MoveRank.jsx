@@ -15,10 +15,10 @@ function MoveRank({contestants, onUpdateRank}){
 
   return (
     <div onClick={handleOnUpdateRank}>
-    {contestantList.map((contestant, index) => 
-      <RankBarMobile contestant={contestants[contestant]}
-      key={index}/>
-    )}
+      {contestantList.map((contestant, index) => 
+        <RankBarMobile contestant={contestants[contestant]}
+          key={index}/>
+      )}
       <style jsx>{`
       
       `}</style>
