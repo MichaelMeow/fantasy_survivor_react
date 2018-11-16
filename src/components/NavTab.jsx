@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class NavTab extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -36,5 +36,9 @@ class NavTab extends React.Component {
     );
   }
 }
+
+NavTab.propTypes = {
+  name: PropTypes.string
+};
 
 export default NavTab;

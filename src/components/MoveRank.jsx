@@ -8,7 +8,7 @@ class MoveRank extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rank: [
+      rank: {
         0: null,
         1: null,
         2: null,
@@ -29,7 +29,7 @@ class MoveRank extends React.Component {
         17: null,
         18: null,
         19: null
-      ]
+      }
     };
   }
 

@@ -5,7 +5,7 @@ function ContestantPhotoMobile(){
 
   return (
     <div className='photo-circle'>
-    <img src='https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/2f368ae8a128c594_svr_christianh_800x1000.jpg' className="photo"/>
+      <img src='https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/2f368ae8a128c594_svr_christianh_800x1000.jpg' className="photo"/>
 
       <style jsx>{`
         .photo-circle {

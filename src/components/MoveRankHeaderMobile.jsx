@@ -10,8 +10,8 @@ function MoveRankHeaderMobile(){
           <g id='Desktop' fill='none' fillRule='evenodd' strokeLinecap='square'>
             <g id='ContestantBarHead' transform='translate(-10 -4)' stroke='#979797'>
               <g id='Group' transform='translate(10 4)'>
-                  <path d='M0.5,34.5 L243.5,34.5' id='Line-2' />
-                  <path d='M39.5,0.5 L39.5,34.5' id='Line-3' />
+                <path d='M0.5,34.5 L243.5,34.5' id='Line-2' />
+                <path d='M39.5,0.5 L39.5,34.5' id='Line-3' />
               </g>
             </g>
           </g>
