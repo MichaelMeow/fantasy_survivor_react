@@ -16,102 +16,102 @@ class App extends React.Component {
     this.state = {
       sessionUser: null,
       contestants: {
-        alec-merlino: {
+        alecmerlino: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        alison-raybould: {
+        alisonraybould: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/c70dba33ac036406_svr37_800x1000_alisonraybould.jpg',
         },
-        angelina-keeley: {
+        angelinakeeley: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/516aca89f77c9a6b_svr37_800x1000_angelinakeeley.jpg',
         },
-        bi-nguyen: {
+        binguyen: {
           currentTribe: "David",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        carl-boudreaux: {
+        carlboudreaux: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/8cb547f9d9960fe9_svr37_800x1000_carlboudreaux.jpg',
         },
-        christian-hubcki: {
+        christianhubcki: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/2f368ae8a128c594_svr_christianh_800x1000.jpg',
         },
-        dan-rengering: {
+        danrengering: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/b7af171dcd9574bf_svr37_800x1000_danrengering.jpg',
         },
-        davie-rickenbacker: {
+        davierickenbacker: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/7385df05f4baa622_svr37_800x1000_davierickenbacker.jpg',
         },
-        elizabeth-olsen: {
+        elizabetholsen: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        gabby-pascuzzi: {
+        gabbypascuzzi: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/9128154ea29ea81f_svr37_800x1000_gabbypascuzzi_.jpg',
         },
-        jeremy-crawford: {
+        jeremycrawford: {
           currentTribe: "Goliath",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        jessica-peet: {
+        jessicapeet: {
           currentTribe: "David",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        john-hennigan: {
+        johnhennigan: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/297329a83288b25f_svr37_800x1000_johnhennigan.jpg',
         },
-        kara-kay: {
+        karakay: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/806bb21886d2dcf0_svr37_800x1000_karakay.jpg',
         },
-        lyrsa-torres: {
+        lyrsatorres: {
           currentTribe: "Jabeni",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        mike-white: {
+        mikewhite: {
           currentTribe: "Kalokalo",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        natalia-azoqa: {
+        nataliaazoqa: {
           currentTribe: "Vuku",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        natalie-cole: {
+        nataliecole: {
           currentTribe: "Jabeni",
           originalTribe: "Goliath",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        nick-wilson: {
+        nickwilson: {
           currentTribe: "Kalokalo",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
         },
-        pat-cusack: {
+        patcusack: {
           currentTribe: "David",
           originalTribe: "David",
           photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
@@ -120,6 +120,15 @@ class App extends React.Component {
       }
     };
   }
+  
+  handleContestantInfoSubmit(contestant) {
+    console.log(contestant.name);
+    console.log(contestant.ogTribe);
+    console.log(contestant.photoURL);
+    const names = contestant.name.split(" ");
+    console.log(names);
+  }
+  
   
   
   render(){
@@ -133,7 +142,7 @@ class App extends React.Component {
       <Route path='/scoreboard' component={Scoreboard} />
       <Route path='/episodes' component={Episodes} />
       <Route path='/rules' component={Rules} />
-      <Route path='/Admin' component={Admin} />
+      <Route path='/Admin' render={()=> <Admin onContestantInfoSubmit={this.handleContestantInfoSubmit} />} />
       </Switch>
       
       <style jsx global>{`
