@@ -3,12 +3,11 @@ import ContestantPhotoMobile from './ContestantPhotoMobile';
 import PropTypes from 'prop-types';
 
 function RankBarMobile({contestant}){
-  console.log(contestant)
 
   return (
     <div className="rank-bar-container">
       <div className="contestant-photo">
-        <ContestantPhotoMobile/>
+        <ContestantPhotoMobile photoURL={contestant.photoURL}/>
       </div>
       <div className="rank-text-center">
         <div className="rank-bar-text">
@@ -19,7 +18,7 @@ function RankBarMobile({contestant}){
             {contestant.firstName} {contestant.lastName}
           </div>
           <div className="tribe">
-            Tiva
+            {contestant.originalTribe}
           </div>
           <div className="stock">
             2.3<span>(+1.0)</span>
