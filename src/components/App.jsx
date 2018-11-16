@@ -45,6 +45,7 @@ class App extends React.Component {
       photoURL: contestant.photoURL,
     };
     this.setState({contestants: newContestantState});
+    console.log(newContestantState);
   }
   
 
