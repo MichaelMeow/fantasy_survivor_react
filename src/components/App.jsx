@@ -9,30 +9,38 @@ import Episodes from './Episodes'
 import Admin from './Admin'
 import Move from './Move'
 
-function App(){
-
-  document.body.style.margin = '0px';
-
-  return (
-    <div>
+class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
+  }
+  
+  render(){
+    document.body.style.margin = '0px';
+    return (
+      <div>
       <Header/>
       <Nav/>
       <Switch>
-        <Route path='/move' component={Move} />
-        <Route path='/scoreboard' component={Scoreboard} />
-        <Route path='/episodes' component={Episodes} />
-        <Route path='/rules' component={Rules} />
-        <Route path='/Admin' component={Admin} />
+      <Route path='/move' component={Move} />
+      <Route path='/scoreboard' component={Scoreboard} />
+      <Route path='/episodes' component={Episodes} />
+      <Route path='/rules' component={Rules} />
+      <Route path='/Admin' component={Admin} />
       </Switch>
-
+      
       <style jsx global>{`
         * {
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-size: 12px;
         }
-    `}</style>
-    </div>
-  );
+        `}</style>
+        </div>
+      );
+  }
 }
 
 export default App;

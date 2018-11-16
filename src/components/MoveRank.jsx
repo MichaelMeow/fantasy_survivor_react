@@ -3,20 +3,29 @@ import RankBarMobile from './RankBarMobile';
 
 
 
-function MoveRank(){
+class MoveRank extends React.Component {
 
-  return (
-    <div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
+  }
+
+  render() {
+    return (
+      <div>
       <RankBarMobile/>
       <RankBarMobile/>
       <RankBarMobile/>
-
-
+      
+      
       <style jsx>{`
-
-    `}</style>
-    </div>
-  );
+        
+        `}</style>
+        </div>
+      );
+  }
 }
 
 export default MoveRank;
