@@ -9,7 +9,7 @@ import Admin from './Admin';
 import Move from './Move';
 
 class App extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,11 +29,27 @@ class App extends React.Component {
           firstName: 'Mike',
           lastName: 'White'
         }
+      },
+      episodes: {
+        0: null,
+        1: {
+          airDate: null,
+          immunityWinner: null,
+          rewardWinner: null,
+          message: null,
+          name: null,
+          out: {
+            0: null,
+            1: null,
+            2: null
+          },
+        }
       }
     };
     this.handleContestantInfoSubmit = this.handleContestantInfoSubmit.bind(this);
+    this.handleEpisodeInfoSubmit = this.handleEpisodeInfoSubmit.bind(this);
   }
-  
+
   handleContestantInfoSubmit(contestant) {
     let newContestantState = JSON.parse(JSON.stringify(this.state.contestants));
     const names = contestant.name.split(' ');
@@ -46,9 +62,17 @@ class App extends React.Component {
     };
     this.setState({contestants: newContestantState});
   }
-  
+  handleEpisodeInfoSubmit(episode) {
+    let newEpisodesState = JSON.parse(JSON.stringify(this.state.episodes));
+    const episodeKeys = Object.keys(episode);
+    const episodeNumber = episodeKeys[0];
+    newEpisodesState[episodeNumber] = episode[episodeNumber];
+    console.log(newEpisodesState);
+    this.setState({episodes: newEpisodesState});
+  }
 
-  
+
+
   render(){
     document.body.style.margin = '0px';
     return (
@@ -60,9 +84,9 @@ class App extends React.Component {
           <Route path='/scoreboard' component={Scoreboard} />
           <Route path='/episodes' component={Episodes} />
           <Route path='/rules' component={Rules} />
-          <Route path='/Admin' render={()=> <Admin onContestantInfoSubmit={this.handleContestantInfoSubmit} />} />
+          <Route path='/Admin' render={()=> <Admin onContestantInfoSubmit={this.handleContestantInfoSubmit} onEpisodeInfoSubmit={this.handleEpisodeInfoSubmit} />} />
         </Switch>
-        
+
         <style jsx global>{`
           * {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

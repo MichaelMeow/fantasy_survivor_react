@@ -7,9 +7,11 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSubmitted: false,
+      isContestantSubmitted: false,
+      isEpisodeSubmitted: false,
     };
     this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
+    this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
   }
   
   handleContestantFormSubmission(event) {
@@ -19,14 +21,34 @@ class Admin extends React.Component {
       ogTribe: this.ogTribe.value,
       photoURL: this.photoURL.value
     });
-    let newState = this.state.isSubmitted;
+    let newState = this.state.isContestantSubmitted;
     newState = true;
-    this.setState({isSubmitted: newState});
+    this.setState({isContestantSubmitted: newState});
     // this.submittedName = _name.value + " has been submitted.";
     this.name.value = '';
     this.ogTribe.value = '';
     this.photoURL.value = '';
-    
+  }
+  
+  handleEpisodeFormSubmission(event) {
+    event.preventDefault();
+    this.props.onEpisodeInfoSubmit({
+      [this.episodeNumber.value]: {
+        name: this.episodeTitle.value,
+        rewardWinner: this.rewardWinner.value,
+        immunityWinner: this.immunityWinner.value,
+        out:{
+          0: this.out.value,
+          1: this.out2.value,
+          2: this.out3.value
+        },
+        message: this.episodeMessage.value,
+        airDate: this.airDate.value
+      }
+    });
+    let newState = this.state.isEpisodeSubmitted;
+    newState = true;
+    this.setState({isEpisodeSubmitted: newState});
   }
 
   render(){
@@ -36,13 +58,13 @@ class Admin extends React.Component {
       Admin Page
         <form  onSubmit={this.handleContestantFormSubmission}>
           <h3>
-      Add Contestants:
+            Add Contestants:
           </h3>
           <div>
-      To be used at beginning of the season to add survivor contestants to the game.
+            To be used at beginning of the season to add survivor contestants to the game.
           </div>
           <div>
-      Contestant First and Last Name
+            Contestant First and Last Name
           </div>
           <div>
             <input
@@ -52,7 +74,7 @@ class Admin extends React.Component {
               ref={(input) => {this.name = input;}}/>
           </div>
           <div>
-      Contestant Starting Tribe
+            Contestant Starting Tribe
           </div>
           <div>
             <input
@@ -62,7 +84,7 @@ class Admin extends React.Component {
               ref={(input) => {this.ogTribe = input;}}/>
           </div>
           <div>
-      Contestant Photo URL (Headshot from CBS.com, example: https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/13c7e74872b87a9d_svr37_800x1000_nataliaazoqa.jpg)
+            Contestant Photo URL (Headshot from CBS.com, example: https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/13c7e74872b87a9d_svr37_800x1000_nataliaazoqa.jpg)
           </div>
           <div>
             <input
@@ -75,7 +97,91 @@ class Admin extends React.Component {
             <button type='submit'>Submit</button>
           </div>
           <div>
-            {this.state.isSubmitted ? 'Submitted' : ''}
+            {this.state.isContestantSubmitted ? 'Submitted' : ''}
+          </div>
+        </form>
+        <form onSubmit={this.handleEpisodeFormSubmission}>
+          <h3>
+            Enter Episode Info
+          </h3>
+          <div>
+            Episode Number:
+            <input 
+              type='number' 
+              id='episodeNumber' 
+              placeholder='Episode Number'
+              ref={(input) => {this.episodeNumber = input;}}/>
+          </div>
+          <div>
+            Episode Title:
+            <input 
+              type='text' 
+              id='episodeTitle' 
+              placeholder='Episode Title'
+              ref={(input) => {this.episodeTitle = input;}}/>
+          </div>
+          <div>
+            Reward Winner:
+            <input 
+              type='text' 
+              id='rewardWinner' 
+              placeholder='Reward Winner'
+              ref={(input) => {this.rewardWinner = input;}}/>
+          </div>
+          <div>
+            Immunity Winner:
+            <input 
+              type='text' 
+              id='immunityWinner' 
+              placeholder='Immunity Winner'
+              ref={(input) => {this.immunityWinner = input;}}/>
+          </div>
+          <div>
+            Contestant Out:
+            <input 
+              type='text' 
+              id='out' 
+              placeholder='Contestant Out'
+              ref={(input) => {this.out = input;}}/>
+          </div>
+          <div>
+            Contestant Out 2(optional):
+            <input 
+              type='text' 
+              id='out2' 
+              placeholder='Contestant Out 2'
+              ref={(input) => {this.out2 = input;}}/>
+          </div>
+          <div>
+            Contestant Out 3(optional):
+            <input 
+              type='text' 
+              id='out3' 
+              placeholder='Contestant Out 3'
+              ref={(input) => {this.out3 = input;}}/>
+          </div>
+          <div>
+            Episode Message:
+          </div>
+          <div 
+            id='episodeMessage' 
+            contentEditable={true}
+            ref={(div) => {this.episodeMessage = div;}}>
+            Type here. You can insert images too
+            <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcQCze-mfukcuvzKk7Ilj2zQ0CS6PbOkq7ZhRInnNd1Yz3TQzU4e&t=1" />
+          </div>
+          <div>
+            Enter air date of next episode:
+            <input 
+              type='date' 
+              id='airDate'
+              ref={(input) => {this.airDate = input;}}/>
+          </div>
+          <div>
+            <button type='submit'>Submit</button>
+          </div>
+          <div>
+            {this.state.isEpisodeSubmitted ? 'Submitted' : ''}
           </div>
         </form>
         <style jsx>{`
@@ -96,7 +202,8 @@ class Admin extends React.Component {
 }
 
 Admin.propTypes = {
-  onContestantInfoSubmit: PropTypes.func
+  onContestantInfoSubmit: PropTypes.func,
+  onEpisodeInfoSubmit: PropTypes.func
 };
 
 export default Admin;
