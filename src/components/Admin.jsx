@@ -170,6 +170,7 @@ class Admin extends React.Component {
             Type here. You can insert images too
             <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcQCze-mfukcuvzKk7Ilj2zQ0CS6PbOkq7ZhRInnNd1Yz3TQzU4e&t=1" />
           </div>
+          //I realize this contentEditable is problematic in REACT I am leaving it here to fix later.
           <div>
             Enter air date of next episode:
             <input 
