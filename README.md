@@ -1,4 +1,4 @@
-# epicodus-queue
+# Fantasy Survivor React
 
 * _npm Install_
 * _Make sure atom react package is version 0.17.0_

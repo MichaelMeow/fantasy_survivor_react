@@ -13,7 +13,9 @@ class NavTab extends React.Component {
   }
 
   handleClick(){
-    this.setState({selectedTab: 'selected'});
+    const newState = JSON.parse(JSON.stringify(this.state));
+    newState.selectedTab = 'selected';
+    this.setState({selectedTab: newState.selectedTab});
   }
 
   render(){

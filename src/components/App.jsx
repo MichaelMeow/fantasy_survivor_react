@@ -67,7 +67,6 @@ class App extends React.Component {
     const episodeKeys = Object.keys(episode);
     const episodeNumber = episodeKeys[0];
     newEpisodesState[episodeNumber] = episode[episodeNumber];
-    console.log(newEpisodesState);
     this.setState({episodes: newEpisodesState});
   }
 
