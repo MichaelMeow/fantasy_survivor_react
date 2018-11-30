@@ -6,6 +6,7 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toEqual({
       adminSlice: {
         contestants: [],
+        episodes: [],
         isContestantSubmitted: false,
         isEpisodeSubmitted: false,
       },
