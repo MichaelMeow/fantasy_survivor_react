@@ -39,7 +39,8 @@ describe("adminReducer", () => {
       rewardWinner: 'Alec Merlino',
       immunityWinner: 'Mike White',
       message: 'Good episode!',
-      airDate: '11/28/2018'
+      airDate: '11/28/2018',
+      out: ['out1', 'out2', null]
 
      })).toEqual({
       contestants: [],
@@ -49,7 +50,12 @@ describe("adminReducer", () => {
           rewardWinner: 'Alec Merlino',
           immunityWinner: 'Mike White',
           message: 'Good episode!',
-          airDate: '11/28/2018'
+          airDate: '11/28/2018',
+          out: {
+            0: 'out1',
+            1: 'out2',
+            2: null
+          },
         }
       }],
       isContestantSubmitted: false,

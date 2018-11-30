@@ -13,6 +13,7 @@ export default (state = defaultAdminSlice, action) => {
     };
     newState.contestants = newState.contestants.concat([newContestant]);
     newState.isContestantSubmitted = true;
+    console.log(newState);
   return newState;
   case 'ADD_EPISODE':
     const newEpisode = {
@@ -22,10 +23,16 @@ export default (state = defaultAdminSlice, action) => {
         immunityWinner: action.immunityWinner,
         message: action.message,
         airDate: action.airDate,
+        out: {
+          0: action.out[0],
+          1: action.out[1],
+          2: action.out[2],
+        }
       }
     };
     newState.episodes = newState.episodes.concat([newEpisode]);
     newState.isEpisodeSubmitted = true;
+    console.log(newState);
   return newState;
   default:
   return state;

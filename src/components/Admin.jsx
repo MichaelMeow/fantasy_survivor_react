@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
 class Admin extends React.Component {
@@ -15,15 +16,16 @@ class Admin extends React.Component {
 
   handleContestantFormSubmission(event) {
     event.preventDefault();
-    this.props.onContestantInfoSubmit({
+
+    const { dispatch } = this.props;
+    const action = {
+      type: 'ADD_CONTESTANT',
       name: this.name.value,
       ogTribe: this.ogTribe.value,
       photoURL: this.photoURL.value
-    });
-    let newState = this.state.isContestantSubmitted;
-    newState = true;
-    this.setState({isContestantSubmitted: newState});
-    // this.submittedName = _name.value + " has been submitted.";
+    }
+    dispatch(action);
+
     this.name.value = '';
     this.ogTribe.value = '';
     this.photoURL.value = '';
@@ -31,23 +33,32 @@ class Admin extends React.Component {
 
   handleEpisodeFormSubmission(event) {
     event.preventDefault();
-    this.props.onEpisodeInfoSubmit({
-      [this.episodeNumber.value]: {
-        name: this.episodeTitle.value,
-        rewardWinner: this.rewardWinner.value,
-        immunityWinner: this.immunityWinner.value,
-        out:{
-          0: this.out.value,
-          1: this.out2.value,
-          2: this.out3.value
-        },
-        message: this.episodeMessage.value,
-        airDate: this.airDate.value
-      }
-    });
-    let newState = this.state.isEpisodeSubmitted;
-    newState = true;
-    this.setState({isEpisodeSubmitted: newState});
+
+    const { dispatch } = this.props;
+    const action = {
+      type: 'ADD_EPISODE',
+      name: this.episodeTitle.value,
+      number: this.episodeNumber.value,
+      rewardWinner: this.rewardWinner.value,
+      immunityWinner: this.immunityWinner.value,
+      message: this.episodeMessage.value,
+      airDate: this.airDate.value,
+      out: {
+        0: this.out.value,
+        1: this.out2.value,
+        2: this.out3.value
+      },
+    }
+    dispatch(action);
+    this.episodeTitle.value = '';
+    this.episodeNumber.value = '';
+    this.rewardWinner.value = '';
+    this.immunityWinner.value = '';
+    this.episodeMessage.value = '';
+    this.airDate.value = '';
+    this.out.value = '';
+    this.out2.value = '';
+    this.out3.value = '';
   }
 
   render(){
@@ -206,4 +217,4 @@ Admin.propTypes = {
   onEpisodeInfoSubmit: PropTypes.func
 };
 
-export default Admin;
+export default connect()(Admin);
