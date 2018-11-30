@@ -7,13 +7,12 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isContestantSubmitted: false,
-      isEpisodeSubmitted: false,
+
     };
     this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
     this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
   }
-  
+
   handleContestantFormSubmission(event) {
     event.preventDefault();
     this.props.onContestantInfoSubmit({
@@ -29,7 +28,7 @@ class Admin extends React.Component {
     this.ogTribe.value = '';
     this.photoURL.value = '';
   }
-  
+
   handleEpisodeFormSubmission(event) {
     event.preventDefault();
     this.props.onEpisodeInfoSubmit({
@@ -53,7 +52,7 @@ class Admin extends React.Component {
 
   render(){
     return (
-      
+
       <div>
       Admin Page
         <form  onSubmit={this.handleContestantFormSubmission}>
@@ -106,65 +105,65 @@ class Admin extends React.Component {
           </h3>
           <div>
             Episode Number:
-            <input 
-              type='number' 
-              id='episodeNumber' 
+            <input
+              type='number'
+              id='episodeNumber'
               placeholder='Episode Number'
               ref={(input) => {this.episodeNumber = input;}}/>
           </div>
           <div>
             Episode Title:
-            <input 
-              type='text' 
-              id='episodeTitle' 
+            <input
+              type='text'
+              id='episodeTitle'
               placeholder='Episode Title'
               ref={(input) => {this.episodeTitle = input;}}/>
           </div>
           <div>
             Reward Winner:
-            <input 
-              type='text' 
-              id='rewardWinner' 
+            <input
+              type='text'
+              id='rewardWinner'
               placeholder='Reward Winner'
               ref={(input) => {this.rewardWinner = input;}}/>
           </div>
           <div>
             Immunity Winner:
-            <input 
-              type='text' 
-              id='immunityWinner' 
+            <input
+              type='text'
+              id='immunityWinner'
               placeholder='Immunity Winner'
               ref={(input) => {this.immunityWinner = input;}}/>
           </div>
           <div>
             Contestant Out:
-            <input 
-              type='text' 
-              id='out' 
+            <input
+              type='text'
+              id='out'
               placeholder='Contestant Out'
               ref={(input) => {this.out = input;}}/>
           </div>
           <div>
             Contestant Out 2(optional):
-            <input 
-              type='text' 
-              id='out2' 
+            <input
+              type='text'
+              id='out2'
               placeholder='Contestant Out 2'
               ref={(input) => {this.out2 = input;}}/>
           </div>
           <div>
             Contestant Out 3(optional):
-            <input 
-              type='text' 
-              id='out3' 
+            <input
+              type='text'
+              id='out3'
               placeholder='Contestant Out 3'
               ref={(input) => {this.out3 = input;}}/>
           </div>
           <div>
             Episode Message:
           </div>
-          <div 
-            id='episodeMessage' 
+          <div
+            id='episodeMessage'
             contentEditable={true}
             ref={(div) => {this.episodeMessage = div;}}>
             Type here. You can insert images too
@@ -173,8 +172,8 @@ class Admin extends React.Component {
           //I realize this contentEditable is problematic in REACT I am leaving it here to fix later.
           <div>
             Enter air date of next episode:
-            <input 
-              type='date' 
+            <input
+              type='date'
               id='airDate'
               ref={(input) => {this.airDate = input;}}/>
           </div>
