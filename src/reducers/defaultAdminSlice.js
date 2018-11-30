@@ -1,5 +1,5 @@
 const defaultAdminSlice = {
-  contestants: [{}],
+  contestants: [],
   isContestantSubmitted: false,
   isEpisodeSubmitted: false,
 }

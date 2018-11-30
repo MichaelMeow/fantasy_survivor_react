@@ -5,7 +5,7 @@ describe("adminReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
     expect(adminReducer(defaultAdminSlice, { type: null })).toEqual({
-      contestants: [{}],
+      contestants: [],
       isContestantSubmitted: false,
       isEpisodeSubmitted: false,
     });
@@ -26,6 +26,7 @@ describe("adminReducer", () => {
         }
       }],
       isContestantSubmitted: true,
+      isEpisodeSubmitted: false,
     });
   });
 
