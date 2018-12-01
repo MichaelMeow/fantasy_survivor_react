@@ -12,10 +12,13 @@ function EpisodeForm(props) {
   let out = null;
   let out2 = null;
   let out3 = null;
+  let lastEpisode = null;
+  if(props.episodes[0]){
+    lastEpisode = Object.keys(props.episodes.slice(-1)[0])[0];
+  };
 
   function handleEpisodeFormSubmission(event) {
     event.preventDefault();
-    console.log("hmm");
     const { dispatch } = props;
     const action = {
       type: 'ADD_EPISODE',
@@ -124,7 +127,7 @@ function EpisodeForm(props) {
           <button type='submit'>Submit</button>
         </div>
         <div>
-          {props.isEpisodeSubmitted ? 'Thank you, episode has been submitted' : ''}
+          {props.isEpisodeSubmitted ? 'Thank you, episode ' + lastEpisode + ' has been submitted' : ''}
         </div>
       </form>
       <style jsx>{`
@@ -141,13 +144,6 @@ function EpisodeForm(props) {
       `}</style>
     </div>
   )
-
 }
 
-const mapStateToProps = state => {
-  return{
-    isEpisodeSubmitted: state.adminSlice.isEpisodeSubmitted,
-  }
-}
-
-export default connect(mapStateToProps)(EpisodeForm);
+export default connect()(EpisodeForm);

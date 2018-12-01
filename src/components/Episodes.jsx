@@ -14,7 +14,6 @@ class Episodes extends React.Component{
 
   render(){
     const episodeList = Object.keys(this.props.episodes);
-    console.log(episodeList);
     return (
       <div>
         {episodeList.map((episode, index) =>

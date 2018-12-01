@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 function Episodes({episode}){
   let episodeNumber = Object.keys(episode)[0];
   let episodeObject = episode[episodeNumber];
-  console.log(episodeObject);
+
 
   return (
     <div className="episodeCell">

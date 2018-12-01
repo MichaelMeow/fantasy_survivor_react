@@ -12,15 +12,36 @@ class Admin extends React.Component {
     };
   }
 
+  componentDidMount(){
+    const { dispatch } = this.props;
+    const action = {
+      type: 'RESET_ADMIN',
+    };
+    dispatch(action);
+  }
+
   render(){
     return (
 
       <div>
-        <ContestantForm />
-        <EpisodeForm />
+        <ContestantForm isContestantSubmitted = {this.props.isContestantSubmitted} contestants = {this.props.contestants}
+         />
+        <EpisodeForm
+        episodes = {this.props.episodes}
+        isEpisodeSubmitted = {this.props.isEpisodeSubmitted}
+        />
       </div>
     );
   }
 }
 
-export default connect()(Admin);
+const mapStateToProps = state => {
+  return{
+    isContestantSubmitted: state.adminSlice.isContestantSubmitted,
+    isEpisodeSubmitted: state.adminSlice.isEpisodeSubmitted,
+    contestants: state.adminSlice.contestants,
+    episodes: state.adminSlice.episodes,
+  }
+}
+
+export default connect(mapStateToProps)(Admin);

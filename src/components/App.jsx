@@ -13,63 +13,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionUser: null,
-      contestants: {
-        alecmerlino: {
-          currentTribe: 'Kalokalo',
-          originalTribe: 'Goliath',
-          photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/4be6faee886ff178_svr37_800x1000_alecmerlino.jpg',
-          firstName: 'Alec',
-          lastName: 'Merlino'
-        },
-        mikewhite: {
-          currentTribe: 'Kalokalo',
-          originalTribe: 'Goliath',
-          photoURL: 'https://wwwimage-secure.cbsstatic.com/thumbnails/photos/w270/cast/b0ff2beae68866cb_svr_mikew_800x1000.jpg',
-          firstName: 'Mike',
-          lastName: 'White'
-        }
-      },
-      episodes: {
-        0: null,
-        1: {
-          airDate: null,
-          immunityWinner: null,
-          rewardWinner: null,
-          message: null,
-          name: null,
-          out: {
-            0: null,
-            1: null,
-            2: null
-          },
-        }
-      }
     };
-    this.handleContestantInfoSubmit = this.handleContestantInfoSubmit.bind(this);
-    this.handleEpisodeInfoSubmit = this.handleEpisodeInfoSubmit.bind(this);
   }
-
-  handleContestantInfoSubmit(contestant) {
-    let newContestantState = JSON.parse(JSON.stringify(this.state.contestants));
-    const names = contestant.name.split(' ');
-    const fullnamelowercase = (names[0] + names[1]).toLowerCase();
-    newContestantState[fullnamelowercase] = {
-      firstName: names[0],
-      lastName: names[1],
-      originalTribe: contestant.ogTribe,
-      photoURL: contestant.photoURL,
-    };
-    this.setState({contestants: newContestantState});
-  }
-  handleEpisodeInfoSubmit(episode) {
-    let newEpisodesState = JSON.parse(JSON.stringify(this.state.episodes));
-    const episodeKeys = Object.keys(episode);
-    const episodeNumber = episodeKeys[0];
-    newEpisodesState[episodeNumber] = episode[episodeNumber];
-    this.setState({episodes: newEpisodesState});
-  }
-
 
 
   render(){

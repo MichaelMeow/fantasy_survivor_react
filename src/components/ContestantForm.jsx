@@ -5,6 +5,11 @@ function ContestantForm(props) {
   let contestantName = null;
   let ogTribe = null;
   let photoURL = null;
+  let lastContestant = null;
+  if (props.contestants[0]){
+      lastContestant = Object.keys(props.contestants.slice(-1)[0])[0];
+  }
+
 
   function handleContestantFormSubmission(event) {
     event.preventDefault();
@@ -64,7 +69,7 @@ function ContestantForm(props) {
           <button type='submit'>Submit</button>
         </div>
         <div>
-          {props.isContestantSubmitted ? 'Thank you, contestant has been submitted' : ''}
+          {props.isContestantSubmitted ? 'Thank you, contestant ' + lastContestant + ' has been submitted' : ''}
         </div>
       </form>
       <style jsx>{`
@@ -84,10 +89,4 @@ function ContestantForm(props) {
 
 }
 
-const mapStateToProps = state => {
-  return{
-    isContestantSubmitted: state.adminSlice.isContestantSubmitted,
-  }
-}
-
-export default connect(mapStateToProps)(ContestantForm);
+export default connect()(ContestantForm);

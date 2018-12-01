@@ -34,6 +34,10 @@ export default (state = defaultAdminSlice, action) => {
     newState.isEpisodeSubmitted = true;
     console.log(newState);
   return newState;
+  case 'RESET_ADMIN':
+    newState.isEpisodeSubmitted = false;
+    newState.isContestantSubmitted = false;
+  return newState;
   default:
   return state;
   }
