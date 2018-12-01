@@ -2,7 +2,7 @@ import React from 'react';
 import SubmitButton from './SubmitButton';
 import MoveRankHeaderMobile from './MoveRankHeaderMobile';
 import MoveRank from './MoveRank';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
 class Move extends React.Component {
@@ -10,33 +10,25 @@ class Move extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
     };
-    this.handleMoveSubmit = this.handleMoveSubmit.bind(this);
   }
 
-  handleMoveSubmit(){
-    //send rank state to database
-    // console.log('submitted');
-  }
-
-  handleUpdateRank(){
-    // console.log(rank);
-  }
 
   render(){
     return (
       <div>
-        <SubmitButton onMoveSubmit={this.handleMoveSubmit}/>
+        <SubmitButton />
         <MoveRankHeaderMobile/>
-        <MoveRank contestants={this.props.contestants} onUpdateRank={this.handleUpdateRank}/>
+        <MoveRank contestants={this.props.contestants} />
       </div>
     );
   }
 }
 
-Move.propTypes = {
-  contestants: PropTypes.object,
-};
+const mapStateToProps = state => {
+  return{
+    contestants: state.adminSlice.contestants,
+  }
+}
 
-export default Move;
+export default connect(mapStateToProps)(Move);

@@ -3,11 +3,13 @@ import ContestantPhotoMobile from './ContestantPhotoMobile';
 import PropTypes from 'prop-types';
 
 function RankBarMobile({contestant}){
+    let contestantName = Object.keys(contestant)[0];
+    let contestantObject = contestant[contestantName];
 
   return (
     <div className="rank-bar-container">
       <div className="contestant-photo">
-        <ContestantPhotoMobile photoURL={contestant.photoURL}/>
+        <ContestantPhotoMobile photoURL={contestantObject.photoURL}/>
       </div>
       <div className="rank-text-center">
         <div className="rank-bar-text">
@@ -15,10 +17,10 @@ function RankBarMobile({contestant}){
             1
           </div>
           <div className="contestant">
-            {contestant.firstName} {contestant.lastName}
+            {contestantName}
           </div>
           <div className="tribe">
-            {contestant.originalTribe}
+            {contestantObject.ogTribe}
           </div>
           <div className="stock">
             2.3<span>(+1.0)</span>
