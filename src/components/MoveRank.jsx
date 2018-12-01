@@ -12,9 +12,6 @@ function MoveRank({contestants, onUpdateRank}){
         <RankBarMobile contestant={contestants[contestant]}
           key={index}/>
       )}
-      <style jsx>{`
-
-      `}</style>
     </div>
   );
 }

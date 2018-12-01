@@ -63,7 +63,7 @@ function RankBarMobile({contestant}){
           font-size: .8rem;
           color: #8EE7EC;
         }
-    `}</style>
+      `}</style>
     </div>
   );
 }
