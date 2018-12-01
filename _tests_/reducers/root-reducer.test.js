@@ -7,8 +7,7 @@ describe("rootReducer", () => {
       adminSlice: {
         contestants: [],
         episodes: [],
-        isContestantSubmitted: false,
-        isEpisodeSubmitted: false,
+        tribes: [],
       },
       moveSlice: {
         rank: {

@@ -1,8 +1,8 @@
 const defaultAdminSlice = {
   contestants: [],
   episodes: [],
-  isContestantSubmitted: false,
-  isEpisodeSubmitted: false,
+  tribes: [],
+
 }
 
 export default defaultAdminSlice;

@@ -7,8 +7,7 @@ describe("adminReducer", () => {
     expect(adminReducer(defaultAdminSlice, { type: null })).toEqual({
       contestants: [],
       episodes: [],
-      isContestantSubmitted: false,
-      isEpisodeSubmitted: false,
+      tribes: [],
     });
   });
   test('Should add contestant if contestant submitted', () => {
@@ -27,8 +26,7 @@ describe("adminReducer", () => {
         }
       }],
       episodes: [],
-      isContestantSubmitted: true,
-      isEpisodeSubmitted: false,
+      tribes: [],
     });
   });
   test('Should add episode if episode submitted', () => {
@@ -58,8 +56,7 @@ describe("adminReducer", () => {
           },
         }
       }],
-      isContestantSubmitted: false,
-      isEpisodeSubmitted: true,
+      tribes: [],
     });
   });
 

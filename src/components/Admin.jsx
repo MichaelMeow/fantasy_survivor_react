@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ContestantForm from './ContestantForm';
 import EpisodeForm from './EpisodeForm';
+import TribeForm from './TribeForm';
 
 
 class Admin extends React.Component {
@@ -9,27 +10,43 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isContestantSubmitted: false,
+      isEpisodeSubmitted: false,
+      isTribeSubmitted: false,
     };
+    this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
   }
 
   componentDidMount(){
-    const { dispatch } = this.props;
-    const action = {
-      type: 'RESET_ADMIN',
-    };
-    dispatch(action);
+    let newState = Object.assign({}, this.state);
+    newState.isContestantSubmitted = false;
+    newState.isEpisodeSubmitted = false;
+    newState.isTribeSubmitted = false;
+    this.setState(newState);
+  }
+
+  handleEpisodeFormSubmission(){
+    let newState = Object.assign({}, this.state);
+    newState.isEpisodeSubmitted = true;
+    this.setState(newState);
   }
 
   render(){
     return (
 
       <div>
-        <ContestantForm isContestantSubmitted = {this.props.isContestantSubmitted} contestants = {this.props.contestants}
+        <ContestantForm onContestantFormSubmission = {this.handleContestantFormSubmission} contestants = {this.props.contestants}
          />
         <EpisodeForm
         episodes = {this.props.episodes}
-        isEpisodeSubmitted = {this.props.isEpisodeSubmitted}
+        onEpisodeFormSubmission = {this.handleEpisodeFormSubmission}
+        isEpisodeSubmitted = {this.state.isEpisodeSubmitted}
+        contestants = {this.props.contestants}
+        state = {this.state}
         />
+        <TribeForm
+        tribes = {this.props.tribes}
+        onTribeFormSubmission = {this.handleEpisodeFormSubmission} />
       </div>
     );
   }
@@ -37,10 +54,12 @@ class Admin extends React.Component {
 
 const mapStateToProps = state => {
   return{
-    isContestantSubmitted: state.adminSlice.isContestantSubmitted,
-    isEpisodeSubmitted: state.adminSlice.isEpisodeSubmitted,
+    isContestantSubmitted: false,
+    isEpisodeSubmitted: false,
+    isTribeSubmitted: false,
     contestants: state.adminSlice.contestants,
     episodes: state.adminSlice.episodes,
+    tribes: state.adminSlice.tribes,
   }
 }
 
