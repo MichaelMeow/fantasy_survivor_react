@@ -14,7 +14,10 @@ class Admin extends React.Component {
       isEpisodeSubmitted: false,
       isTribeSubmitted: false,
     };
+    this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
     this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
+    this.handleTribeFormSubmission = this.handleTribeFormSubmission.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   componentDidMount(){
@@ -22,31 +25,64 @@ class Admin extends React.Component {
     newState.isContestantSubmitted = false;
     newState.isEpisodeSubmitted = false;
     newState.isTribeSubmitted = false;
+    newState.error = false;
     this.setState(newState);
   }
 
+  handleContestantFormSubmission(){
+    let newState = Object.assign({}, this.state);
+    newState.isContestantSubmitted = true;
+    newState.error = false;
+    this.setState(newState);
+  }
   handleEpisodeFormSubmission(){
     let newState = Object.assign({}, this.state);
     newState.isEpisodeSubmitted = true;
+    newState.error = false;
     this.setState(newState);
+  }
+  handleTribeFormSubmission(){
+    let newState = Object.assign({}, this.state);
+    newState.isTribeSubmitted = true;
+    newState.error = false;
+    this.setState(newState);
+  }
+
+  handleError(message){
+    let newState = Object.assign({}, this.state);
+    newState.error = message;
+    this.setState(newState);
+    window.scrollTo(0, 0);
   }
 
   render(){
     return (
 
       <div>
-        <ContestantForm onContestantFormSubmission = {this.handleContestantFormSubmission} contestants = {this.props.contestants}
-         />
+        {this.state.error ? <div className='errorMessage'> {this.state.error} </div> : <div></div>}
         <EpisodeForm
         episodes = {this.props.episodes}
         onEpisodeFormSubmission = {this.handleEpisodeFormSubmission}
         isEpisodeSubmitted = {this.state.isEpisodeSubmitted}
         contestants = {this.props.contestants}
-        state = {this.state}
+        onError = {this.handleError}
         />
         <TribeForm
         tribes = {this.props.tribes}
-        onTribeFormSubmission = {this.handleEpisodeFormSubmission} />
+        isTribeSubmitted = {this.state.isTribeSubmitted}
+        onTribeFormSubmission = {this.handleTribeFormSubmission}/>
+        <ContestantForm
+        onContestantFormSubmission = {this.handleContestantFormSubmission}
+        isContestantSubmitted = {this.state.isContestantSubmitted}
+        contestants = {this.props.contestants}
+         />
+        <style jsx>{`
+          .errorMessage {
+            padding: 10px;
+            background-color: lightcoral;
+            border-radius: 5px;
+          }
+          `}</style>
       </div>
     );
   }
@@ -54,9 +90,6 @@ class Admin extends React.Component {
 
 const mapStateToProps = state => {
   return{
-    isContestantSubmitted: false,
-    isEpisodeSubmitted: false,
-    isTribeSubmitted: false,
     contestants: state.adminSlice.contestants,
     episodes: state.adminSlice.episodes,
     tribes: state.adminSlice.tribes,

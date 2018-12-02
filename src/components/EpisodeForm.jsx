@@ -4,11 +4,19 @@ import ScoringTable from './ScoringTable';
 
 function EpisodeForm(props) {
   let lastEpisode = null;
+  console.log(props.episode);
   if(props.episodes[0]){
-    lastEpisode = Object.keys(props.episodes.slice(-1)[0])[0];
+    lastEpisode = parseInt(Object.keys(props.episodes).slice(-1)) + 1;
   };
 
   function submitForm(event){
+    if (event.target.episodeNumber.value == false){
+      props.onError("Please enter an episode number.")
+      return;
+    } else if (parseInt(event.target.episodeNumber.value) > Object.keys(props.episodes).length + 1) {
+      props.onError("The episode number you entered was too high.")
+      return;
+    }
     event.preventDefault();
     props.onEpisodeFormSubmission();
     const { dispatch } = props;

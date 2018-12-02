@@ -10,8 +10,9 @@ function TribeForm(props) {
   }
 
 
-  function handleTribeFormSubmission(event) {
+  function submitTribe(event) {
     event.preventDefault();
+    props.onTribeFormSubmission();
     const { dispatch } = props;
     const action = {
       type: 'ADD_TRIBE',
@@ -24,7 +25,7 @@ function TribeForm(props) {
 
   return (
     <div>
-      <form  onSubmit={handleTribeFormSubmission}>
+      <form  onSubmit={submitTribe}>
         <h3>
           Add Tribe:
         </h3>

@@ -3,9 +3,6 @@ import React from 'react';
 
 function ScoringTableRow({contestant, id}) {
 
-  //first figure out the data structure and how the data will be parsed in action, then name the inputs according to that. episodes[contestantname].array[16]
-
-
   return (
     <div className='scoringTable container'>
       <div className={`contestant ${id}`}>

@@ -12,7 +12,6 @@ export default (state = defaultAdminSlice, action) => {
       }
     };
     newState.contestants = newState.contestants.concat([newContestant]);
-    newState.isContestantSubmitted = true;
   return newState;
   case 'ADD_TRIBE':
     const newTribe = {
@@ -66,7 +65,7 @@ export default (state = defaultAdminSlice, action) => {
         }
       fullScoringTable = Object.assign({}, fullScoringTable, scoringTableRow)
     });
-    let newEpisodeWithScoringTable = Object.assign({}, newEpisode[action.event.target.episodeNumber.value], fullScoringTable)
+    let newEpisodeWithScoringTable = Object.assign({}, newEpisode[action.event.target.episodeNumber.value], newEpisode[action.event.target.episodeNumber.value].fullScoringTable)
     newState.episodes = newState.episodes.concat([newEpisodeWithScoringTable]);
     console.log(newState);
   return newState;
