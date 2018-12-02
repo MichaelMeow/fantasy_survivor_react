@@ -88,6 +88,13 @@ function EpisodeForm(props) {
             id='episodeMessage'
             placeholder='Episode Message'/>
         </div>
+        <div>
+          Air Date:
+          <input
+            type='date'
+            id='airDate'
+            placeholder='Air Date'/>
+        </div>
 
         <ScoringTable
         contestants = {props.contestants}/>

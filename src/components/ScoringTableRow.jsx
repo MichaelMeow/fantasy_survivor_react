@@ -12,56 +12,56 @@ function ScoringTableRow({contestant, id}) {
         {contestant}
       </div>
       <div>
-        <input type="checkbox" id={`${contestant}teamReward`} value="" />
+        <input type="checkbox" id={`${contestant}teamReward`}  />
       </div>
       <div>
-        <input type="checkbox" id={`${contestant}teamImmunity`} value="" />
+        <input type="checkbox" id={`${contestant}teamImmunity`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}individualReward`} value="" />
+        <input type="checkbox" id={`${contestant}individualReward`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}individualImmunity`} value="" />
+        <input type="checkbox" id={`${contestant}individualImmunity`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}correctVote`} value="" />
+        <input type="checkbox" id={`${contestant}correctVote`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}recievedVote`} value="" />
+        <input type="checkbox" id={`${contestant}recievedVote`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}votedOff`} value="" />
+        <input type="checkbox" id={`${contestant}votedOff`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}clue`} value="" />
+        <input type="checkbox" id={`${contestant}clue`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}foundIdol`} value="" />
+        <input type="checkbox" id={`${contestant}foundIdol`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}foundAdvantage`} value="" />
+        <input type="checkbox" id={`${contestant}foundAdvantage`}  />
       </div>
       <div>
-        <input type="number" classNameid={`${contestant}heldIdol`} value="" />
+        <input type='number' id={`${contestant}heldIdol`} />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}heldAdvantage`} value="" />
+        <input type="checkbox" id={`${contestant}heldAdvantage`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}quoted`} value="" />
+        <input type="checkbox" id={`${contestant}quoted`}  />
       </div>
       <div>
-        <input type="checkbox" classNameid={`${contestant}chosenReward`} value="" />
+        <input type="checkbox" id={`${contestant}chosenReward`}  />
       </div>
       <div>
-        <input type="number" classNameid={`${contestant}juryVotes`} value="" />
+        <input type="number" id={`${contestant}juryVotes`}/>
       </div>
       <div>
-        <input type="number" classNameid={`${contestant}special`} value="" />
+        <input type="number" id={`${contestant}special`}/>
       </div>
       <div className={`assignTribe ${id}`}>
-        <select className="selectTribe 1">
-          <option value="">-tribe-</option>
+        <select id={`${contestant}tribe`}>
+          <option >-tribe-</option>
         </select>
       </div>
       <div className={`Total ${id}`}>
