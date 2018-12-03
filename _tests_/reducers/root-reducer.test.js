@@ -5,9 +5,12 @@ describe("rootReducer", () => {
   test('Should return default state if no action type is recognized', () => {
     expect(rootReducer({}, { type: null })).toEqual({
       adminSlice: {
-        contestants: [],
-        episodes: [],
-        tribes: [],
+        contestants: {},
+        episodes: {},
+        tribes: {},
+        isContestantSubmitted: false,
+        isEpisodeSubmitted: false,
+        isTribeSubmitted: false,
       },
       moveSlice: {
         rank: {

@@ -1,10 +1,12 @@
 import moveReducer from './../../src/reducers/moveReducer';
-import defaultMoveSlice from './../../src/reducers/defaultMoveSlice';
+import c from './../../src/constants';
+
+const { defaultMoveState } = c;
 
 describe("moveReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
-    expect(moveReducer(defaultMoveSlice, { type: null })).toEqual({
+    expect(moveReducer(defaultMoveState, { type: null })).toEqual({
       rank: {
         0: null,
         1: null,

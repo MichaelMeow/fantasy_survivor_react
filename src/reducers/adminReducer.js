@@ -1,42 +1,45 @@
-import defaultAdminSlice from './defaultAdminSlice';
+import c from './../constants';
 
-export default (state = defaultAdminSlice, action) => {
+const { defaultAdminState, types } = c;
+
+export default (state = defaultAdminState, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
-  case 'ADD_CONTESTANT':
+  case types.ADD_CONTESTANT:
     const newContestant = {
-      [action.name]: {
+      [action.id]: {
         name: action.name,
         ogTribe: action.ogTribe,
         photoURL: action.photoURL,
       }
     };
-    newState.contestants = newState.contestants.concat([newContestant]);
+    newState.contestants = Object.assign({}, newState.contestants, newContestant);
   return newState;
-  case 'ADD_TRIBE':
+  case types.ADD_TRIBE:
     const newTribe = {
-      [action.name]: {
+      [action.id]: {
         name: action.name,
-        color: action.tribeColor,
+        tribeColor: action.tribeColor,
       }
     };
-    newState.tribes = newState.tribes.concat([newTribe]);
+    newState.tribes = Object.assign({}, newState.tribes, newTribe)
     console.log(newState);
   return newState;
-  case 'ADD_EPISODE':
+  case types.ADD_EPISODE:
     const newEpisode = {
-      [action.event.target.episodeNumber.value]: {
-        episodeTitle: action.event.target.episodeTitle.value,
-        rewardWinner: action.event.target.rewardWinner.value,
-        immunityWinner: action.event.target.immunityWinner.value,
-        episodeMessage: action.event.target.episodeMessage.value,
-        airDate: action.event.target.airDate.value,
-        out1: action.event.target.out1.value,
-        out2: action.event.target.out2.value,
-        out3: action.event.target.out3.value,
+      [action.id]: {
+        episodeNumber: action.episodeNumber,
+        episodeTitle: action.episodeTitle,
+        rewardWinner: action.rewardWinner,
+        immunityWinner: action.immunityWinner,
+        episodeMessage: action.episodeMessage,
+        airDate: action.airDate,
+        out1: action.out1,
+        out2: action.out2,
+        out3: action.out3,
       }
     };
-    let contestantList = Object.keys(state.contestants);
+    let contestantList = [];
     let fullScoringTable = {};
     contestantList.map(function(contestantNumber, index){
       let contestant = Object.keys(state.contestants[contestantNumber])[0];
@@ -63,8 +66,8 @@ export default (state = defaultAdminSlice, action) => {
         }
       fullScoringTable = Object.assign({}, fullScoringTable, scoringTableRow)
     });
-    let newEpisodeWithScoringTable = Object.assign({}, newEpisode[action.event.target.episodeNumber.value], newEpisode[action.event.target.episodeNumber.value].fullScoringTable)
-    newState.episodes = newState.episodes.concat([newEpisodeWithScoringTable]);
+    let newEpisodeWithScoringTable = Object.assign({}, newEpisode[action.id], newEpisode[action.id].fullScoringTable)
+    newState.episodes = Object.assign({}, newState.episodes, newEpisode);
     console.log(newState);
   return newState;
   default:

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addTribe } from './../actions';
+import v4 from 'uuid';
 
 function TribeForm(props) {
   let tribeName = null;
@@ -18,12 +20,7 @@ function TribeForm(props) {
     }
     props.onTribeFormSubmission();
     const { dispatch } = props;
-    const action = {
-      type: 'ADD_TRIBE',
-      name: tribeName.value,
-      tribeColor: tribeColor.value,
-    }
-    dispatch(action);
+    dispatch(addTribe(tribeName.value, tribeColor.value, v4()))
     tribeName.value = '';
   }
 

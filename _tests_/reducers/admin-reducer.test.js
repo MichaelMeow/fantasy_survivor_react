@@ -1,62 +1,44 @@
 import adminReducer from './../../src/reducers/adminReducer';
-import defaultAdminSlice from './../../src/reducers/defaultAdminSlice';
+import { addTribe, addContestant, addEpisode } from './../../src/actions';
 
 describe("adminReducer", () => {
 
-  test('Should return default state if no action type is recognized', () => {
-    expect(adminReducer(defaultAdminSlice, { type: null })).toEqual({
-      contestants: [],
-      episodes: [],
-      tribes: [],
-    });
-  });
   test('Should add contestant if contestant submitted', () => {
-    expect(adminReducer(defaultAdminSlice, {
-      type: 'ADD_CONTESTANT',
-      name: 'contestantName',
-      ogTribe: 'David',
-      photoURL: 'example.jpg',
-
-     })).toEqual({
-      contestants: [{
-        contestantName: {
+    expect(adminReducer({}, addContestant('contestantName', 'David', 'example.jpg', 'xxx1'))).toEqual({
+      contestants: {
+        xxx1: {
           name: 'contestantName',
           ogTribe: 'David',
           photoURL: 'example.jpg',
         }
-      }],
-      episodes: [],
-      tribes: [],
+      },
+    });
+  });
+  test('Should add tribe if tribe submitted', () => {
+    expect(adminReducer({}, addTribe('tribeName', '#000000', 'xxx1'))).toEqual({
+      tribes: {
+        xxx1: {
+          name: 'tribeName',
+          tribeColor: '#000000',
+        }
+      },
     });
   });
   test('Should add episode if episode submitted', () => {
-    expect(adminReducer(defaultAdminSlice, {
-      type: 'ADD_EPISODE',
-      name: 'episode name',
-      number: 1,
-      rewardWinner: 'Alec Merlino',
-      immunityWinner: 'Mike White',
-      message: 'Good episode!',
-      airDate: '11/28/2018',
-      out: ['out1', 'out2', null]
-
-     })).toEqual({
-      contestants: [],
-      episodes: [{
-        1: {
-          name: 'episode name',
+    expect(adminReducer({}, addEpisode('episode name', '1', 'Alec Merlino', 'Mike White', 'Good episode!', '11/28/2018', 'out1', 'out2', 'out3', 'xxx1'))).toEqual({
+      episodes: {
+        xxx1: {
+          episodeNumber: '1',
+          episodeTitle: 'episode name',
           rewardWinner: 'Alec Merlino',
           immunityWinner: 'Mike White',
-          message: 'Good episode!',
+          episodeMessage: 'Good episode!',
           airDate: '11/28/2018',
-          out: {
-            0: 'out1',
-            1: 'out2',
-            2: null
-          },
+          out1: 'out1',
+          out2: 'out2',
+          out3: 'out3',
         }
-      }],
-      tribes: [],
+      },
     });
   });
 

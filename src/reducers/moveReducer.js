@@ -1,5 +1,7 @@
-import defaultMoveSlice from './defaultMoveSlice';
+import c from './../constants';
 
-export default (state = defaultMoveSlice, action) => {
+const { defaultMoveState } = c;
+
+export default (state = defaultMoveState, action) => {
   return state;
 }

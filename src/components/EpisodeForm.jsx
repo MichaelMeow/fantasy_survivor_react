@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScoringTable from './ScoringTable';
+import { addEpisode } from './../actions';
+import v4 from 'uuid';
 
 function EpisodeForm(props) {
   let lastEpisode = null;
@@ -30,17 +32,7 @@ function EpisodeForm(props) {
     event.preventDefault();
     props.onEpisodeFormSubmission();
     const { dispatch } = props;
-    let action = {
-      type: 'ADD_EPISODE',
-      event: event,
-      name: event.target.episodeTitle.value,
-      rewardWinner: event.target.rewardWinner.value,
-      immunityWinner: event.target.immunityWinner.value,
-      message: event.target.episodeMessage.value,
-      airDate: event.target.airDate.value,
-      out: [event.target.out1.value, event.target.out2.value, event.target.out3.value],
-    }
-    dispatch(action);
+    dispatch(addEpisode(event.target.episodeTitle.value, event.target.episodeNumber.value, event.target.rewardWinner.value, event.target.immunityWinner.value, event.target.episodeMessage.value, event.target.airDate.value, event.target.out1.value, event.target.out2.value, event.target.out3.value));
     const initialState = {
       episodeNumber: '',
       episodeTitle: '',

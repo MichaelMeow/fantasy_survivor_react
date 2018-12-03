@@ -1,4 +1,4 @@
-const defaultMoveSlice = {
+const defaultMoveState = {
   rank: {
     0: null,
     1: null,
@@ -23,4 +23,4 @@ const defaultMoveSlice = {
   }
 }
 
-export default defaultMoveSlice;
+export default defaultMoveState;

@@ -20,7 +20,8 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.7.2",
     "styled-components": "^4.0.3",
-    "styled-jsx": "^3.1.0"
+    "styled-jsx": "^3.1.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

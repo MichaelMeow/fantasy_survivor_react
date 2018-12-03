@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addContestant } from './../actions';
+import v4 from 'uuid';
 
 function ContestantForm(props) {
   let contestantName = null;
@@ -19,14 +21,7 @@ function ContestantForm(props) {
     }
     props.onContestantFormSubmission();
     const { dispatch } = props;
-    const action = {
-      type: 'ADD_CONTESTANT',
-      name: contestantName.value,
-      ogTribe: ogTribe.value,
-      photoURL: photoURL.value,
-
-    }
-    dispatch(action);
+    dispatch(addContestant(contestantName.value, ogTribe.value, photoURL.value, v4()));
     contestantName.value = '';
     ogTribe.value = '';
     photoURL.value = '';

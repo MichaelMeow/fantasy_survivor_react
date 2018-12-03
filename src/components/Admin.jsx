@@ -4,15 +4,11 @@ import ContestantForm from './ContestantForm';
 import EpisodeFormContainer from './EpisodeFormContainer';
 import TribeForm from './TribeForm';
 
-
 class Admin extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isContestantSubmitted: false,
-      isEpisodeSubmitted: false,
-      isTribeSubmitted: false,
       loadEpisodeFormState: null,
     };
     this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
@@ -23,6 +19,7 @@ class Admin extends React.Component {
   }
 
   componentDidMount(){
+
     let newState = Object.assign({}, this.state);
     newState.isContestantSubmitted = false;
     newState.isEpisodeSubmitted = false;
