@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ContestantForm from './ContestantForm';
-import EpisodeForm from './EpisodeForm';
+import EpisodeFormContainer from './EpisodeFormContainer';
 import TribeForm from './TribeForm';
 
 
@@ -13,11 +13,13 @@ class Admin extends React.Component {
       isContestantSubmitted: false,
       isEpisodeSubmitted: false,
       isTribeSubmitted: false,
+      loadEpisodeFormState: null,
     };
     this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
     this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
     this.handleTribeFormSubmission = this.handleTribeFormSubmission.bind(this);
     this.handleError = this.handleError.bind(this);
+    this.handleLoadEpisodeState = this.handleLoadEpisodeState.bind(this);
   }
 
   componentDidMount(){
@@ -26,6 +28,7 @@ class Admin extends React.Component {
     newState.isEpisodeSubmitted = false;
     newState.isTribeSubmitted = false;
     newState.error = false;
+    newState.loadEpisodeFormState = null;
     this.setState(newState);
   }
 
@@ -38,6 +41,7 @@ class Admin extends React.Component {
   handleEpisodeFormSubmission(){
     let newState = Object.assign({}, this.state);
     newState.isEpisodeSubmitted = true;
+    newState.loadEpisodeFormState = null;
     newState.error = false;
     this.setState(newState);
   }
@@ -55,18 +59,22 @@ class Admin extends React.Component {
     window.scrollTo(0, 0);
   }
 
+  handleLoadEpisodeState(episodeFormState){
+    this.setState(episodeFormState);
+  }
+
   render(){
     return (
 
       <div>
         {this.state.error ? <div className='errorMessage'> {this.state.error} </div> : <div></div>}
-        <EpisodeForm
+        <EpisodeFormContainer
         episodes = {this.props.episodes}
         onEpisodeFormSubmission = {this.handleEpisodeFormSubmission}
+        onLoadEpisodeState = {this.handleLoadEpisodeState}
         isEpisodeSubmitted = {this.state.isEpisodeSubmitted}
         contestants = {this.props.contestants}
         onError = {this.handleError}
-        state={this.state}
         />
         <TribeForm
         tribes = {this.props.tribes}

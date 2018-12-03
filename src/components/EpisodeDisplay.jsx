@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 
 function Episodes({episode}){
-  let episodeNumber = Object.keys(episode)[0];
-  let episodeObject = episode[episodeNumber];
+  let episodeObject = episode;
 
 
   return (
@@ -23,9 +22,7 @@ function Episodes({episode}){
         Immunity Winner: {episodeObject.immunityWinner}
       </div>
       <div className="epCellInfo">
-        Contestant Going Home: {episodeObject.out[0]},
-        {episodeObject.out[1]},
-        {episodeObject.out[2]}
+
       </div>
       <div>
         {episodeObject.message}

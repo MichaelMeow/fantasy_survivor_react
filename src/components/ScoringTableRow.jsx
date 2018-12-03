@@ -9,7 +9,7 @@ function ScoringTableRow({contestant, id}) {
         {contestant}
       </div>
       <div>
-        <input type="checkbox" id={`${contestant}teamReward`}  />
+        <input type="checkbox" id={`${contestant}teamReward`} />
       </div>
       <div>
         <input type="checkbox" id={`${contestant}teamImmunity`}  />

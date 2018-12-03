@@ -26,16 +26,14 @@ export default (state = defaultAdminSlice, action) => {
   case 'ADD_EPISODE':
     const newEpisode = {
       [action.event.target.episodeNumber.value]: {
-        name: action.event.target.episodeTitle.value,
+        episodeTitle: action.event.target.episodeTitle.value,
         rewardWinner: action.event.target.rewardWinner.value,
         immunityWinner: action.event.target.immunityWinner.value,
-        message: action.event.target.episodeMessage.value,
+        episodeMessage: action.event.target.episodeMessage.value,
         airDate: action.event.target.airDate.value,
-        out: {
-          0: action.event.target.out.value,
-          1: action.event.target.out2.value,
-          2: action.event.target.out3.value,
-        },
+        out1: action.event.target.out1.value,
+        out2: action.event.target.out2.value,
+        out3: action.event.target.out3.value,
       }
     };
     let contestantList = Object.keys(state.contestants);
