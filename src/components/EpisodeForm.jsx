@@ -31,7 +31,10 @@ function EpisodeForm(props) {
       out: [event.target.out.value, event.target.out2.value, event.target.out3.value],
     }
     dispatch(action);
+  }
 
+  function loadEpisode(){
+    episodeNumber.value = '666';
   }
 
   return (
@@ -115,6 +118,7 @@ function EpisodeForm(props) {
           : <div></div>
         }
       </form>
+      <button onClick={loadEpisode}>Load Episode</button>
       <style jsx>{`
         div {
           padding: 10px;

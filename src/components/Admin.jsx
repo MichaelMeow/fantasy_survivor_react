@@ -66,15 +66,19 @@ class Admin extends React.Component {
         isEpisodeSubmitted = {this.state.isEpisodeSubmitted}
         contestants = {this.props.contestants}
         onError = {this.handleError}
+        state={this.state}
         />
         <TribeForm
         tribes = {this.props.tribes}
         isTribeSubmitted = {this.state.isTribeSubmitted}
-        onTribeFormSubmission = {this.handleTribeFormSubmission}/>
+        onTribeFormSubmission = {this.handleTribeFormSubmission}
+        onError = {this.handleError}
+        />
         <ContestantForm
         onContestantFormSubmission = {this.handleContestantFormSubmission}
         isContestantSubmitted = {this.state.isContestantSubmitted}
         contestants = {this.props.contestants}
+        onError = {this.handleError}
          />
         <style jsx>{`
           .errorMessage {

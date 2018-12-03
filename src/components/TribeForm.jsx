@@ -12,6 +12,10 @@ function TribeForm(props) {
 
   function submitTribe(event) {
     event.preventDefault();
+    if (event.target.tribeName.value == false){
+      props.onError("Please enter a tribe name.")
+      return;
+    }
     props.onTribeFormSubmission();
     const { dispatch } = props;
     const action = {
@@ -55,12 +59,20 @@ function TribeForm(props) {
           <button type='submit'>Submit</button>
         </div>
         <div>
-          {props.isTribeSubmitted ? 'Thank you, tribe ' + lastTribe + ' has been created' : ''}
+          {
+            props.isTribeSubmitted
+            ? <div className='green'> Thank you, tribe {lastTribe} has been created </div>
+            : <div></div>
+          }
         </div>
       </form>
       <style jsx>{`
         div {
           padding: 10px;
+        }
+        .green {
+          background-color: lightgreen;
+          border-radius: 5px;
         }
         button {
           padding: 5px 35px;

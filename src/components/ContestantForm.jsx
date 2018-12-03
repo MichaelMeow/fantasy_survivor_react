@@ -11,14 +11,20 @@ function ContestantForm(props) {
   }
 
 
-  function handleContestantFormSubmission(event) {
+  function submitContestant(event) {
     event.preventDefault();
+    if (event.target.contestantName.value == false){
+      props.onError("Please enter an contestant name.")
+      return;
+    }
+    props.onContestantFormSubmission();
     const { dispatch } = props;
     const action = {
       type: 'ADD_CONTESTANT',
       name: contestantName.value,
       ogTribe: ogTribe.value,
-      photoURL: photoURL.value
+      photoURL: photoURL.value,
+
     }
     dispatch(action);
     contestantName.value = '';
@@ -28,7 +34,7 @@ function ContestantForm(props) {
 
   return (
     <div>
-      <form  onSubmit={handleContestantFormSubmission}>
+      <form  onSubmit={submitContestant}>
         <h3>
           Add Contestants:
         </h3>
@@ -69,12 +75,20 @@ function ContestantForm(props) {
           <button type='submit'>Submit</button>
         </div>
         <div>
-          {props.isContestantSubmitted ? 'Thank you, contestant ' + lastContestant + ' has been submitted' : ''}
+          {
+            props.isContestantSubmitted
+            ? <div className='green'> Thank you, contestant {lastContestant} has been created </div>
+            : <div></div>
+          }
         </div>
       </form>
       <style jsx>{`
         div {
           padding: 10px;
+        }
+        .green {
+          background-color: lightgreen;
+          border-radius: 5px;
         }
         button {
           padding: 5px 35px;
