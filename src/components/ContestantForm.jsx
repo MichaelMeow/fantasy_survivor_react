@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addContestant } from './../actions';
+import { addContestant, clearMessages } from './../actions';
 import v4 from 'uuid';
 
 function ContestantForm(props) {
@@ -19,8 +19,8 @@ function ContestantForm(props) {
       props.onError("Please enter an contestant name.")
       return;
     }
-    props.onContestantFormSubmission();
     const { dispatch } = props;
+    dispatch(clearMessages());
     dispatch(addContestant(contestantName.value, ogTribe.value, photoURL.value, v4()));
     contestantName.value = '';
     ogTribe.value = '';

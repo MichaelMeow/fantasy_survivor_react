@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScoringTable from './ScoringTable';
-import { addEpisode } from './../actions';
+import { addEpisode, clearMessages } from './../actions';
 import v4 from 'uuid';
 
 function EpisodeForm(props) {
@@ -30,8 +30,8 @@ function EpisodeForm(props) {
       return;
     }
     event.preventDefault();
-    props.onEpisodeFormSubmission();
     const { dispatch } = props;
+    dispatch(clearMessages());
     dispatch(addEpisode(event.target.episodeTitle.value, event.target.episodeNumber.value, event.target.rewardWinner.value, event.target.immunityWinner.value, event.target.episodeMessage.value, event.target.airDate.value, event.target.out1.value, event.target.out2.value, event.target.out3.value));
     const initialState = {
       episodeNumber: '',
@@ -51,7 +51,6 @@ function EpisodeForm(props) {
   function loadEpisode(){
     let epNumber = parseInt(episodeNumber.value)
     if (epNumber <= Object.keys(props.episodes).length && epNumber > 0){
-      console.log("we're in");
       const episodeIndex = parseInt(epNumber)-1;
       let newState = Object.assign({}, props.episodeFormState, props.episodes[episodeIndex]);
       console.log(newState);

@@ -32,7 +32,6 @@ class EpisodeFormContainer extends React.Component {
         episodeFormState={this.state}
         onStateChange={this.handleStateChange}
         episodes = {this.props.episodes}
-        onEpisodeFormSubmission = {this.props.onEpisodeFormSubmission}
         onLoadEpisodeState = {this.props.handleLoadEpisodeState}
         isEpisodeSubmitted = {this.props.isEpisodeSubmitted}
         contestants = {this.props.contestants}

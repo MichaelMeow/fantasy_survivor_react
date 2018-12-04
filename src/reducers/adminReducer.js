@@ -14,6 +14,7 @@ export default (state = defaultAdminState, action) => {
       }
     };
     newState.contestants = Object.assign({}, newState.contestants, newContestant);
+    newState.isContestantSubmitted = true;
   return newState;
   case types.ADD_TRIBE:
     const newTribe = {
@@ -22,7 +23,8 @@ export default (state = defaultAdminState, action) => {
         tribeColor: action.tribeColor,
       }
     };
-    newState.tribes = Object.assign({}, newState.tribes, newTribe)
+    newState.tribes = Object.assign({}, newState.tribes, newTribe);
+    newState.isTribeSubmitted = true;
     console.log(newState);
   return newState;
   case types.ADD_EPISODE:
@@ -69,6 +71,13 @@ export default (state = defaultAdminState, action) => {
     let newEpisodeWithScoringTable = Object.assign({}, newEpisode[action.id], newEpisode[action.id].fullScoringTable)
     newState.episodes = Object.assign({}, newState.episodes, newEpisode);
     console.log(newState);
+    newState.isEpisodeSubmitted = true;
+  return newState;
+  case types.CLEAR_MESSAGES:
+    newState.isContestantSubmitted = false;
+    newState.isEpisodeSubmitted = false;
+    newState.isTribeSubmitted = false;
+    newState.error = false;
   return newState;
   default:
   return state;

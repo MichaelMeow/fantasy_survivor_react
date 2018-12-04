@@ -26,3 +26,7 @@ export const addEpisode = (episodeTitle, episodeNumber, rewardWinner, immunityWi
   out3,
   id,
 });
+
+export const clearMessages = () => ({
+  type: types.CLEAR_MESSAGES,
+});

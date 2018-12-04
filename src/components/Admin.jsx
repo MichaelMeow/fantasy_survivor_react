@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ContestantForm from './ContestantForm';
 import EpisodeFormContainer from './EpisodeFormContainer';
 import TribeForm from './TribeForm';
+import { clearMessages } from './../actions';
 
 class Admin extends React.Component {
 
@@ -11,42 +12,16 @@ class Admin extends React.Component {
     this.state = {
       loadEpisodeFormState: null,
     };
-    this.handleContestantFormSubmission = this.handleContestantFormSubmission.bind(this);
-    this.handleEpisodeFormSubmission = this.handleEpisodeFormSubmission.bind(this);
-    this.handleTribeFormSubmission = this.handleTribeFormSubmission.bind(this);
     this.handleError = this.handleError.bind(this);
     this.handleLoadEpisodeState = this.handleLoadEpisodeState.bind(this);
   }
 
   componentDidMount(){
-
     let newState = Object.assign({}, this.state);
-    newState.isContestantSubmitted = false;
-    newState.isEpisodeSubmitted = false;
-    newState.isTribeSubmitted = false;
-    newState.error = false;
     newState.loadEpisodeFormState = null;
     this.setState(newState);
-  }
-
-  handleContestantFormSubmission(){
-    let newState = Object.assign({}, this.state);
-    newState.isContestantSubmitted = true;
-    newState.error = false;
-    this.setState(newState);
-  }
-  handleEpisodeFormSubmission(){
-    let newState = Object.assign({}, this.state);
-    newState.isEpisodeSubmitted = true;
-    newState.loadEpisodeFormState = null;
-    newState.error = false;
-    this.setState(newState);
-  }
-  handleTribeFormSubmission(){
-    let newState = Object.assign({}, this.state);
-    newState.isTribeSubmitted = true;
-    newState.error = false;
-    this.setState(newState);
+    const { dispatch } = this.props;
+    dispatch(clearMessages());
   }
 
   handleError(message){
@@ -61,27 +36,25 @@ class Admin extends React.Component {
   }
 
   render(){
+
     return (
 
       <div>
         {this.state.error ? <div className='errorMessage'> {this.state.error} </div> : <div></div>}
         <EpisodeFormContainer
         episodes = {this.props.episodes}
-        onEpisodeFormSubmission = {this.handleEpisodeFormSubmission}
         onLoadEpisodeState = {this.handleLoadEpisodeState}
-        isEpisodeSubmitted = {this.state.isEpisodeSubmitted}
+        isEpisodeSubmitted = {this.props.isEpisodeSubmitted}
         contestants = {this.props.contestants}
         onError = {this.handleError}
         />
         <TribeForm
         tribes = {this.props.tribes}
-        isTribeSubmitted = {this.state.isTribeSubmitted}
-        onTribeFormSubmission = {this.handleTribeFormSubmission}
+        isTribeSubmitted = {this.props.isTribeSubmitted}
         onError = {this.handleError}
         />
         <ContestantForm
-        onContestantFormSubmission = {this.handleContestantFormSubmission}
-        isContestantSubmitted = {this.state.isContestantSubmitted}
+        isContestantSubmitted = {this.props.isContestantSubmitted}
         contestants = {this.props.contestants}
         onError = {this.handleError}
          />
@@ -102,6 +75,9 @@ const mapStateToProps = state => {
     contestants: state.adminSlice.contestants,
     episodes: state.adminSlice.episodes,
     tribes: state.adminSlice.tribes,
+    isContestantSubmitted: state.adminSlice.isContestantSubmitted,
+    isEpisodeSubmitted: state.adminSlice.isEpisodeSubmitted,
+    isTribeSubmitted: state.adminSlice.isTribeSubmitted,
   }
 }
 
