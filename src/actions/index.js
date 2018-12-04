@@ -30,3 +30,7 @@ export const addEpisode = (episodeTitle, episodeNumber, rewardWinner, immunityWi
 export const clearMessages = () => ({
   type: types.CLEAR_MESSAGES,
 });
+export const error = (errorMessage) => ({
+  type: types.ERROR,
+  errorMessage
+});

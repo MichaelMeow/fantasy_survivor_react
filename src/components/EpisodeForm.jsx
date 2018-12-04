@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScoringTable from './ScoringTable';
-import { addEpisode, clearMessages } from './../actions';
+import { addEpisode, clearMessages, error } from './../actions';
 import v4 from 'uuid';
 
 function EpisodeForm(props) {
@@ -11,14 +11,19 @@ function EpisodeForm(props) {
   };
 
   function submitForm(event){
+    const { dispatch } = props;
+    dispatch(clearMessages());
     if (event.target.episodeNumber.value == false){
-      props.onError("Please enter an episode number.")
+      dispatch(error("Please enter an episode number."));
+      window.scrollTo(0, 0);
       return;
     } else if (parseInt(event.target.episodeNumber.value) > Object.keys(props.episodes).length + 1) {
-      props.onError("The episode number you entered was too high.")
+      dispatch(error("The episode number you entered was too high."));
+      window.scrollTo(0, 0);
       return;
     } else if (parseInt(event.target.episodeNumber.value) < 1) {
-      props.onError("The episode number you entered was below 1.")
+      dispatch(error("The episode number you entered was below 1."));
+      window.scrollTo(0, 0);
       return;
     } else if (event.target.episodeTitle.value == false ||
       event.target.rewardWinner.value == false ||
@@ -26,12 +31,11 @@ function EpisodeForm(props) {
       event.target.episodeMessage.value == false ||
       event.target.airDate.value == false ||
       event.target.out1.value == false) {
-      props.onError("Please complete all fields of the episode form.")
+      dispatch(error("Please complete all fields of the episode form."));
+      window.scrollTo(0, 0);
       return;
     }
     event.preventDefault();
-    const { dispatch } = props;
-    dispatch(clearMessages());
     dispatch(addEpisode(event.target.episodeTitle.value, event.target.episodeNumber.value, event.target.rewardWinner.value, event.target.immunityWinner.value, event.target.episodeMessage.value, event.target.airDate.value, event.target.out1.value, event.target.out2.value, event.target.out3.value));
     const initialState = {
       episodeNumber: '',

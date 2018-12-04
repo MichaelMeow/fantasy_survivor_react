@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ContestantForm from './ContestantForm';
 import EpisodeFormContainer from './EpisodeFormContainer';
 import TribeForm from './TribeForm';
-import { clearMessages } from './../actions';
+import { clearMessages, error } from './../actions';
 
 class Admin extends React.Component {
 
@@ -24,13 +24,6 @@ class Admin extends React.Component {
     dispatch(clearMessages());
   }
 
-  handleError(message){
-    let newState = Object.assign({}, this.state);
-    newState.error = message;
-    this.setState(newState);
-    window.scrollTo(0, 0);
-  }
-
   handleLoadEpisodeState(episodeFormState){
     this.setState(episodeFormState);
   }
@@ -40,7 +33,7 @@ class Admin extends React.Component {
     return (
 
       <div>
-        {this.state.error ? <div className='errorMessage'> {this.state.error} </div> : <div></div>}
+        {this.props.error ? <div className='errorMessage'> {this.props.error} </div> : <div></div>}
         <EpisodeFormContainer
         episodes = {this.props.episodes}
         onLoadEpisodeState = {this.handleLoadEpisodeState}
@@ -78,6 +71,7 @@ const mapStateToProps = state => {
     isContestantSubmitted: state.adminSlice.isContestantSubmitted,
     isEpisodeSubmitted: state.adminSlice.isEpisodeSubmitted,
     isTribeSubmitted: state.adminSlice.isTribeSubmitted,
+    error: state.adminSlice.error,
   }
 }
 

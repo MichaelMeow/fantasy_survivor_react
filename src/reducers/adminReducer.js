@@ -77,7 +77,10 @@ export default (state = defaultAdminState, action) => {
     newState.isContestantSubmitted = false;
     newState.isEpisodeSubmitted = false;
     newState.isTribeSubmitted = false;
-    newState.error = false;
+    newState.error = null;
+  return newState;
+  case types.ERROR:
+    newState.error = action.errorMessage;
   return newState;
   default:
   return state;

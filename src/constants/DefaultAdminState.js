@@ -5,6 +5,7 @@ const defaultAdminState = {
   isContestantSubmitted: false,
   isEpisodeSubmitted: false,
   isTribeSubmitted: false,
+  error: null,
 }
 
 export default defaultAdminState;

@@ -11,6 +11,7 @@ describe("rootReducer", () => {
         isContestantSubmitted: false,
         isEpisodeSubmitted: false,
         isTribeSubmitted: false,
+        error: null,
       },
       moveSlice: {
         rank: {
